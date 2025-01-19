@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
-db = None
+collection = None
 
-def init_app(database):
-    global db
-    db = database
+def init_app(db):
+    global collection
+    collection = db['user']
 
 
 router = APIRouter()
