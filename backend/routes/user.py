@@ -2,7 +2,6 @@ from fastapi import APIRouter, HTTPException
 from schemas import UserCreate, UserUpdate, User
 import bcrypt
 import uuid
-import logging
 HTTPEXCEPTION_USER_NOT_EXIST = HTTPException(404, "User not found")
 
 
@@ -30,7 +29,7 @@ async def create_user(data: UserCreate):
     await collection.insert_one(user)
 
 
-    return User(**user)
+    return {"status_code": True}
 
 @router.get("/get")
 async def get_user(uid: str):
